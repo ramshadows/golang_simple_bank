@@ -11,8 +11,9 @@ import (
 )
 
 func CreateRandomAccount(t *testing.T) Account {
+	user := CreateRandomUser(t)
 	arg := CreateAccountParams{
-		Owner:    utils.RandomOwner(),
+		Owner:    user.Username,
 		Balance:  utils.RandomMoney(),
 		Currency: utils.RandomCurrency(),
 	}
@@ -108,6 +109,7 @@ func TestDeleteAccount(t *testing.T) {
 func TestListAccount(t *testing.T) {
 	var lastAccount Account
 	// Use a loop to create 10 random accounts
+	// and set the last generated account to lastAccount
 	for i := 0; i < 10; i++ {
 		lastAccount = CreateRandomAccount(t)
 
@@ -125,7 +127,7 @@ func TestListAccount(t *testing.T) {
 	// Should return no error
 	require.NoError(t, err)
 
-	// Should return at least 5 accounts
+	
 	require.NotEmpty(t, accounts)
 
 	// Iterate thro the list of accounts and require each of them to be not empty
