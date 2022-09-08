@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/ram/Golang_Playground/src/golang_simple_bank'
+docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=Just2017 -d postgres:14.2-alpine
+make: Leaving directory '/home/ram/Golang_Playground/src/golang_simple_bank'
+ 
